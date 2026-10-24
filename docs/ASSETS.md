@@ -20,8 +20,11 @@ Todos os caminhos abaixo são relativos a `public/assets`. Os arquivos do pacote
 | `services/acrigel-vermelho-real.webp` | Trabalho adicional | 600px de largura | Foto | Trabalho real fornecido | Disponível |
 | `services/collage-trabalhos-reais.webp` | Referência de trabalhos | 800px de largura | Foto | Colagem de trabalhos reais | Disponível |
 | `services/molde-f1-referencia-real.webp` | Referência visual apenas | Manter original | Arte recortada | Arte fornecida, não foto bruta | Fora da interface |
+| `og/taty-soares-link-preview.jpg` | Prévia de compartilhamento | 1200 × 630 | Arte opaca | Imagem fornecida e aprovada pelo usuário | Integrado |
 | `pricing/tabela-original-referencia.webp` | Conferência editorial | Manter original | Arte | Tabela original fornecida | Fora da interface |
 
 Os arquivos `reference/generated_10` do ZIP não são publicados no projeto. Os dois retratos gerados por IA não foram aprovados e não são usados. A tabela e a colagem geradas também não são fontes de preços ou portfólio.
 
 Os itens de serviço usam somente ícones Lucide, sem fotografias. Para atualizar o retrato do cabeçalho, forneça uma imagem aprovada e altere os caminhos de `profile` em `assets-manifest.json` e `src/config/assets.ts`. A nova imagem foi apenas redimensionada e comprimida, preservando o conteúdo enviado. Não associe automaticamente o recorte de arte Molde F1 a um trabalho realizado. Os preços são mantidos exclusivamente em `src/data/prices.ts`.
+
+A imagem de compartilhamento foi convertida para JPEG de 1200 × 630 sem recortar o conteúdo. Os metadados Open Graph e Twitter estão no HTML inicial (`index.html`), com URLs HTTPS absolutas, descrição e dimensões. Ao mudar o arquivo ou domínio, atualize também esses metadados.

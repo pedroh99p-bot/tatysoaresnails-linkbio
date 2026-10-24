@@ -26,6 +26,7 @@ npm run build
 - `src/data/prices.ts`: dez linhas de valores regulares, com decoração por par. Confirme os valores no atendimento; a promoção de R$ 99 não faz parte da tabela.
 - `src/config/links.ts`: telefone, mensagens e URLs opcionais. WhatsApp: **5521989358048**. Configure `instagramUrl` e `locationUrl` com URLs reais quando disponíveis. Sem esses dados, Instagram fica oculto e a localidade aparece como texto.
 - `src/config/assets.ts` e `assets-manifest.json`: caminhos de imagens. `assetUrl()` considera a base do Vite para funcionar no subdiretório do GitHub Pages.
+- `index.html`: prévia de compartilhamento com a arte aprovada em `public/assets/og/taty-soares-link-preview.jpg`; Open Graph e Twitter com URLs absolutas, disponíveis mesmo sem executar JavaScript.
 - `src/styles.css`: cores, tipografia, espaçamento e comportamento responsivo; movimento reduzido respeitado.
 - `src/components`: `HeaderProfile`, `WhatsAppCTA`, `CategoryAccordion`, `ServiceRow`, `PriceSheet` e `FooterActions`.
 

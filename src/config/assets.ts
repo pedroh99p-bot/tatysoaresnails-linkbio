@@ -15,6 +15,9 @@ export const assets = {
   "pricing": {
     "reference": "/assets/pricing/tabela-original-referencia.webp"
   },
+  "og": {
+    "preview": "/assets/og/taty-soares-link-preview.jpg"
+  },
   "services": {
     "collage": "/assets/services/collage-trabalhos-reais.webp",
     "fibra": "/assets/services/fibra-de-vidro-real.webp",
