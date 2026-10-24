@@ -34,11 +34,16 @@ describe('mensagens de agendamento', () => {
 });
 
 describe('conteúdo aprovado', () => {
-  it('mantém categorias, associação de serviços e preços iguais às fontes do pacote', () => {
-    expect(services).toEqual(sourceServices);
+  it('mantém os serviços e preços do pacote com decoração em Alongamentos', () => {
+    const byId = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id);
+    expect(services.flatMap(({ items }) => items).sort(byId)).toEqual(sourceServices.flatMap(({ items }) => items).sort(byId));
     expect(prices).toEqual(sourcePrices);
     expect(services.map(({ label }) => label)).toEqual(['Alongamentos', 'Manutenção e cuidados', 'Pés e extras']);
-    expect(services.map(({ items }) => items.length)).toEqual([3, 4, 4]);
+    expect(services.map(({ items }) => items.map(({ id }) => id))).toEqual([
+      ['molde-f1', 'acrigel', 'fibra-de-vidro', 'decoracao'],
+      ['manutencao-acrigel', 'manutencao-fibra', 'banho-gel', 'blindagem'],
+      ['pe', 'pe-mao', 'spa'],
+    ]);
   });
 
   it('não usa preço promocional nem inventa redes sociais ou endereço', () => {

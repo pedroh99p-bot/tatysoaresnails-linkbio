@@ -30,6 +30,10 @@ export const services: ServiceCategory[] = [
         "id": "fibra-de-vidro",
         "label": "Fibra de vidro",
         "image": "/assets/services/fibra-de-vidro-real.webp"
+      },
+      {
+        "id": "decoracao",
+        "label": "Decoração simples"
       }
     ]
   },
@@ -59,7 +63,7 @@ export const services: ServiceCategory[] = [
   {
     "id": "pes-extras",
     "label": "Pés e extras",
-    "description": "Pés, spa e decoração",
+    "description": "Pés e spa",
     "items": [
       {
         "id": "pe",
@@ -72,10 +76,6 @@ export const services: ServiceCategory[] = [
       {
         "id": "spa",
         "label": "Spa dos pés"
-      },
-      {
-        "id": "decoracao",
-        "label": "Decoração simples"
       }
     ]
   }
