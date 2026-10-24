@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { assets, assetUrl } from './config/assets';
 import { services } from './data/services';
 import { HeaderProfile } from './components/HeaderProfile';
@@ -11,9 +11,33 @@ import './styles.css';
 export default function App() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [pricesOpen, setPricesOpen] = useState(false);
+  const siteRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const site = siteRef.current;
+    if (!site || !window.matchMedia) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const offset = reducedMotion.matches ? 0 : Math.min(Math.max(window.scrollY, 0) * 0.12, 32);
+      site.style.setProperty('--parallax-offset', `${offset}px`);
+    };
+    const onScroll = () => {
+      if (!reducedMotion.matches && !frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    reducedMotion.addEventListener?.('change', update);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      reducedMotion.removeEventListener?.('change', update);
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   return (
-    <div className="site" style={{ '--floral-background': `url("${assetUrl(assets.backgrounds.main)}")` } as CSSProperties}>
+    <div ref={siteRef} className="site" style={{ '--floral-background': `url("${assetUrl(assets.backgrounds.main)}")` } as CSSProperties}>
       <a className="skip-link" href="#servicos">Ir para os serviços</a>
       <main className="linkbio">
         <HeaderProfile />
