@@ -23,3 +23,11 @@ Não foram executados testes em aparelhos físicos, Safari iOS ou Chrome Android
 ## Publicação
 
 Código enviado à `main`. A credencial OAuth permitiu push de código, mas bloqueou a criação de `.github/workflows/deploy.yml` por ausência do escopo `workflow`. O modelo foi preservado em `docs/github-actions/deploy.yml`; a publicação utiliza o build na branch `gh-pages` e o fluxo padrão do GitHub Pages. Consulte o README para atualizar ou migrar futuramente para Actions.
+
+## Correção de tela branca no mobile e na Vercel
+
+- Falha reproduzida na Vercel: HTML HTTP 200 apontando para `/tatysoaresnails-linkbio/assets/index-dAigSrtO.js`, que retorna HTTP 404 na hospedagem em raiz. A base foi alterada para `./`, compatível com ambas as hospedagens.
+- Também foram constatados bundles antigos removidos no GitHub Pages; a publicação restaura e preserva arquivos JS/CSS anteriores para visitantes com HTML em cache.
+- O build entrega o conteúdo inicial renderizado em HTML; o React hidrata os controles. Teste de navegador com JavaScript intencionalmente indisponível confirmou que identidade e link WhatsApp continuam visíveis.
+- Fontes externas passaram a carregar sem bloquear a primeira renderização.
+- Testes de regressão cobrem recuperação de bundles e hidratação sem erros, além da suíte funcional existente.

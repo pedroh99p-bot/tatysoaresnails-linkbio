@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/tatysoaresnails-linkbio/',
+  base: './',
+  build: { target: ['chrome80', 'safari14', 'ios14'] },
   test: {
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',

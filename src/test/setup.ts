@@ -3,7 +3,7 @@ import { cleanup } from '@testing-library/react';
 import { afterEach } from 'vitest';
 
 // jsdom does not implement the browser's modal-dialog lifecycle.
-Object.defineProperties(HTMLDialogElement.prototype, {
+if (typeof HTMLDialogElement !== 'undefined') Object.defineProperties(HTMLDialogElement.prototype, {
   showModal: {
     configurable: true,
     value(this: HTMLDialogElement) {
@@ -21,4 +21,4 @@ Object.defineProperties(HTMLDialogElement.prototype, {
   },
 });
 
-afterEach(cleanup);
+if (typeof document !== 'undefined') afterEach(cleanup);

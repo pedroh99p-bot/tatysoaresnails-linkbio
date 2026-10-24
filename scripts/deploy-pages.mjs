@@ -2,6 +2,7 @@ import { cpSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
+import { restoreBuildAssets } from './pages-assets.mjs';
 
 const root = process.cwd();
 const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
@@ -22,9 +23,10 @@ try {
   stageGit('remote', 'add', 'origin', origin);
   const lookup = spawnSync('git', ['ls-remote', '--exit-code', origin, 'refs/heads/gh-pages'], { encoding: 'utf8' });
   if (lookup.status === 0) {
-    stageGit('fetch', '--depth=1', 'origin', 'gh-pages');
+    stageGit('fetch', '--depth=10', 'origin', 'gh-pages');
     stageGit('checkout', '-B', 'gh-pages', 'FETCH_HEAD');
     stageGit('rm', '-r', '--ignore-unmatch', '.');
+    restoreBuildAssets(staging);
   } else if (lookup.status !== 2) {
     throw new Error('Não foi possível verificar gh-pages. Verifique a conexão e a autenticação Git.');
   }

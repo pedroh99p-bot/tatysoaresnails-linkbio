@@ -11,7 +11,9 @@ npm ci
 npm run dev
 ```
 
-Abra a URL exibida pelo Vite, incluindo `/tatysoaresnails-linkbio/`. Para verificar a versão de produção: `npm run build` e `npm run preview`.
+Abra a URL exibida pelo Vite, incluindo `/tatysoaresnails-linkbio/`. O build inclui o conteúdo inicial em HTML; o React hidrata a página para ativar as interações. Assim, o cabeçalho e o WhatsApp continuam visíveis mesmo se o JavaScript não carregar. As fontes externas não bloqueiam a primeira renderização.
+
+Para verificar a versão de produção: `npm run build` e `npm run preview`.
 
 ```sh
 npm run lint
@@ -46,11 +48,11 @@ Para publicar uma atualização após editar e commitar o código na `main`:
 npm run deploy
 ```
 
-Esse comando executa lint, TypeScript, testes e build, prepara uma cópia temporária e faz push normal na `gh-pages`, preservando o histórico. A configuração em **Settings → Pages** deve usar **Deploy from a branch → gh-pages → / (root)**. O script não muda suas configurações de conta.
+Esse comando executa lint, TypeScript, testes e build, prepara uma cópia temporária e faz push normal na `gh-pages`, preservando o histórico e os bundles JS/CSS anteriores, para que páginas em cache continuem funcionando. A configuração em **Settings → Pages** deve usar **Deploy from a branch → gh-pages → / (root)**. O script não muda suas configurações de conta.
 
 Para ativar CI/CD futuramente, use uma credencial Git com permissão `workflow`, copie `docs/github-actions/deploy.yml` para `.github/workflows/deploy.yml` e altere **Settings → Pages → Source** para **GitHub Actions**. Esse workflow valida pull requests e publica pushes na `main`. Não adicione tokens ao código.
 
-A base de produção está definida como `/tatysoaresnails-linkbio/` em `vite.config.ts`. Para domínio próprio ou outra hospedagem, ajuste a base e publique a pasta `dist`. Nenhum segredo ou token pessoal deve entrar no repositório.
+A base de produção usa caminhos relativos (`./`) em `vite.config.ts`, compatíveis com a raiz da Vercel e a subpasta do GitHub Pages. O arquivo `vercel.json` configura o build e a pasta `dist`. Para outra hospedagem estática, publique a pasta `dist`. Nenhum segredo ou token pessoal deve entrar no repositório.
 
 ## Pendências de conteúdo
 
