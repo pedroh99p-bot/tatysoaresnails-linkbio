@@ -10,7 +10,7 @@ export function HeaderProfile() {
     <header className="profile entrance">
       <div className="avatar-frame">
         {avatarFailed ? <span className="avatar-fallback" aria-label="Taty Soares">TS</span> :
-          <img className="avatar" src={assetUrl(assets.profile.avatar)} width="92" height="92"
+          <img className="avatar" src={assetUrl(assets.profile.avatar)} width="156" height="156"
             alt="Taty Soares, nail designer" fetchPriority="high" onError={() => setAvatarFailed(true)} />}
       </div>
       <div className={`brand ${logoFailed ? 'brand-fallback' : ''}`}>

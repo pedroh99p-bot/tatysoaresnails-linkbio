@@ -5,8 +5,8 @@ export const assets = {
     "monogram": "/assets/brand/monogram-gold.png"
   },
   "profile": {
-    "avatar": "/assets/profile/taty-avatar-real.webp",
-    "original": "/assets/profile/taty-original-real.webp"
+    "avatar": "/assets/profile/taty-avatar-approved.webp",
+    "original": "/assets/profile/taty-profile-approved.webp"
   },
   "backgrounds": {
     "main": "/assets/backgrounds/floral-champagne-mobile.webp",

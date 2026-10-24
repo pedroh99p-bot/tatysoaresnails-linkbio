@@ -4,7 +4,9 @@ Todos os caminhos abaixo são relativos a `public/assets`. Os arquivos do pacote
 
 | Arquivo | Uso | Tamanho sugerido | Fundo | Origem | Status |
 | --- | --- | --- | --- | --- | --- |
-| `profile/taty-avatar-real.webp` | Avatar circular | 256 × 256 | Foto | Fotografia real fornecida | Integrado |
+| `profile/taty-avatar-approved.webp` | Avatar circular atual | 512 × 512 | Foto | Nova imagem fornecida e aprovada pelo usuário | Integrado |
+| `profile/taty-profile-approved.webp` | Nova imagem em maior resolução | 1024 × 1024 | Foto | Nova imagem fornecida e aprovada pelo usuário | Disponível |
+| `profile/taty-avatar-real.webp` | Avatar anterior (referência) | 256 × 256 | Foto | Fotografia real fornecida | Integrado |
 | `profile/taty-original-real.webp` | Referência do retrato | 800px no lado maior | Foto | Fotografia real fornecida | Disponível |
 | `brand/logo-gold.webp` | Assinatura otimizada, derivada do PNG | 400px de largura | Transparente | Conversão do asset fornecido | Integrado |
 | `brand/logo-gold.png` | Original da assinatura | 400px de largura | Transparente | Marca fornecida no pack | Integrado |
@@ -22,4 +24,4 @@ Todos os caminhos abaixo são relativos a `public/assets`. Os arquivos do pacote
 
 Os arquivos `reference/generated_10` do ZIP não são publicados no projeto. Os dois retratos gerados por IA não foram aprovados e não são usados. A tabela e a colagem geradas também não são fontes de preços ou portfólio.
 
-Para adicionar fotografias novas, use material real autorizado e configure um caminho em `src/data/services.ts`. Não associe automaticamente o recorte de arte Molde F1 a um trabalho realizado. Os preços são mantidos exclusivamente em `src/data/prices.ts`.
+Os itens de serviço usam somente ícones Lucide, sem fotografias. Para atualizar o retrato do cabeçalho, forneça uma imagem aprovada e altere os caminhos de `profile` em `assets-manifest.json` e `src/config/assets.ts`. A nova imagem foi apenas redimensionada e comprimida, preservando o conteúdo enviado. Não associe automaticamente o recorte de arte Molde F1 a um trabalho realizado. Os preços são mantidos exclusivamente em `src/data/prices.ts`.

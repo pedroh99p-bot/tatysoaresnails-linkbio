@@ -1,6 +1,6 @@
 # Taty Soares · Link da bio
 
-Mini site estático em português para Taty Soares Nail Designer em Rio das Pedras. React + TypeScript + Vite, uma página com avatar real, WhatsApp, três categorias de serviços e tabela de valores acessível.
+Mini site estático em português para Taty Soares Nail Designer em Rio das Pedras. React + TypeScript + Vite, uma página com retrato aprovado, WhatsApp, três categorias de serviços e tabela de valores acessível.
 
 ## Rodar localmente
 
@@ -33,7 +33,7 @@ A tabela utiliza HTML e dados tipados, não OCR ou imagens geradas. O modal usa 
 
 ## Assets e origem
 
-Consulte [docs/ASSETS.md](docs/ASSETS.md). Os arquivos de produção do ZIP foram preservados em `public/assets`. As referências com retratos de IA não foram incluídas. O recorte Molde F1 e a tabela original estão preservados apenas como referência; não representam fotografias brutas de portfólio nem a interface de preços.
+Consulte [docs/ASSETS.md](docs/ASSETS.md). Os arquivos de produção do ZIP foram preservados em `public/assets`. O retrato atual foi fornecido e aprovado pelo usuário na atualização de 24/10/2026; ele aparece em círculo maior no cabeçalho. Os serviços usam ícones, sem thumbnails. As referências não aprovadas do ZIP não são utilizadas. O recorte Molde F1 e a tabela original estão preservados apenas como referência; não representam fotografias brutas de portfólio nem a interface de preços.
 
 ## GitHub Pages
 

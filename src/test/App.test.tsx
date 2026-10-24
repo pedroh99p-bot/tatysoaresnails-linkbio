@@ -47,6 +47,7 @@ describe('página de agendamento', () => {
         expect(link).toHaveAttribute('target', '_blank');
         expect(link).toHaveAttribute('rel', expect.stringContaining('noopener'));
         expect(link).toHaveAttribute('rel', expect.stringContaining('noreferrer'));
+        expect(link.querySelector('img')).toBeNull();
       }
       for (const other of services.filter(({ id }) => id !== category.id)) {
         expect(categoryButton(other.label)).toHaveAttribute('aria-expanded', 'false');
@@ -85,8 +86,7 @@ describe('página de agendamento', () => {
     }
   });
 
-  it('preserva a identidade e os links quando imagens falham', async () => {
-    const user = userEvent.setup();
+  it('preserva a identidade quando o retrato ou a marca falham', () => {
     render(<App />);
     const avatar = screen.getByRole('img', { name: 'Taty Soares, nail designer' });
     fireEvent.error(avatar);
@@ -97,14 +97,6 @@ describe('página de agendamento', () => {
     expect(screen.getByText('Taty Soares', { exact: true })).toBeVisible();
     expect(screen.getByText('NAIL DESIGNER', { exact: true })).toBeVisible();
 
-    await user.click(categoryButton('Alongamentos'));
-    const acrigel = screen.getByRole('link', { name: 'Acrigel' });
-    const thumbnail = acrigel.querySelector('img');
-    expect(thumbnail).not.toBeNull();
-    fireEvent.error(thumbnail!);
-    expect(acrigel.querySelector('img')).toBeNull();
-    expect(acrigel).toHaveAttribute('href', formatWhatsAppLink('Acrigel'));
-    expect(acrigel).toBeVisible();
   });
 });
 
