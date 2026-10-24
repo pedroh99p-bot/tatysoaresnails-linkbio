@@ -1,0 +1,52 @@
+export type Price = {
+  label: string;
+  brl: number;
+  unit?: string;
+  note?: string;
+};
+
+export const prices: Price[] = [
+  {
+    "label": "Banho de gel",
+    "brl": 90
+  },
+  {
+    "label": "Molde F1 / Acrigel",
+    "brl": 130,
+    "note": "Tabela original: Mold ou Acrigel"
+  },
+  {
+    "label": "Manutenção Acrigel",
+    "brl": 110
+  },
+  {
+    "label": "Fibra de vidro",
+    "brl": 150
+  },
+  {
+    "label": "Manutenção Fibra de vidro",
+    "brl": 120
+  },
+  {
+    "label": "Decoração simples",
+    "brl": 10,
+    "unit": "o par",
+    "note": "Madre-pérola ou glitter, conforme tabela"
+  },
+  {
+    "label": "Pé",
+    "brl": 30
+  },
+  {
+    "label": "Blindagem",
+    "brl": 50
+  },
+  {
+    "label": "Pé e mão simples",
+    "brl": 45
+  },
+  {
+    "label": "Spa dos pés",
+    "brl": 70
+  }
+];

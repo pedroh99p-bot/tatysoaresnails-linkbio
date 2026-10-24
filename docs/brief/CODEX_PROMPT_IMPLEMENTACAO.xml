@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codex_execution_package name="tatysoares-linkbio" version="2.0" locale="pt-BR">
+  <mission><![CDATA[
+IMPLEMENTE AGORA, TESTE E PUBLIQUE NO GITHUB um Linktree premium e compacto para Taty Soares Nail Designer.
+Este ZIP contém imagens reais, logotipos e fundos; não dependa de nova geração de imagens.
+Repositório-alvo: https://github.com/pedroh99p-bot/tatysoaresnails-linkbio
+Telefone/WhatsApp único e definitivo: +55 21 98935-8048 (wa.me/5521989358048).
+Site em português; uma única página, sem backend, sem login, sem checkout, sem CMS.
+O usuário já APROVOU este formato: foto real da Taty pequena e REDONDA no topo, logo delicada, CTA WhatsApp, e SOMENTE três categorias tipo sanfona (accordion), cada uma expandindo os serviços ali mesmo.
+Não reproduza mockups de iPhone dentro do site; apenas a estética premium e compacta.
+A nova instrução de implantação SUBSTITUI o bloqueio de deploy presente na antiga fundação XML.
+  ]]></mission>
+
+  <intake_and_repository><![CDATA[
+1. Localize este arquivo CODEX_PROMPT_IMPLEMENTACAO.xml e o conteúdo do ZIP extraído. Se o ZIP ainda estiver compactado, extraia e leia README.md, assets-manifest.json, content/services.json e content/prices.json.
+2. Confira no terminal git status, branch, remote, autenticação, se existe projeto e se há arquivos locais sem commit. Não presuma repositório vazio só porque ele parecia vazio durante o briefing.
+3. Reaproveite código existente de qualidade, sem apagar trabalhos ou sobrescrever commits. Se houver mudanças locais do usuário, não faça reset, checkout forçado nem sobrescreva.
+4. Clone ou configure https://github.com/pedroh99p-bot/tatysoaresnails-linkbio como origin conforme estado real. Se for vazio, inicie em main; se ocupado, use branch de trabalho e avalie integração segura. Nunca force push.
+5. Copie a pasta public/assets do pacote para public/assets do projeto respeitando exatamente a estrutura; não modifique a identidade, rosto e desenhos das fotos reais.
+6. Trate os 10 PNGs em reference/generated_10 APENAS como material de referência. Os retratos com IA NÃO estão aprovados: um deles altera bordado/nome do uniforme e não deve ir para produção. A tabela criada por IA é APENAS estética. A tabela válida é o original em public/assets/pricing + os valores estruturados em content/prices.json.
+7. Nunca inclua tokens, senhas, chaves pessoais, .env com segredo, nem dependências desnecessárias no Git.
+  ]]></intake_and_repository>
+
+  <execution_and_delegation><![CDATA[
+Como coordenador, divida em frentes/subagentes reais se disponíveis, com ownership de arquivos separado:
+  A. Fundação, build, Git/GitHub Pages e documentação.
+  B. Interface/design tokens, animações e responsividade.
+  C. Conteúdo, categorias, preços e links WhatsApp.
+  D. QA, acessibilidade, testes e validação do deploy.
+Não inicie subagentes falsos; se a ferramenta não suportar, faça as frentes sequencialmente. Integre e rode os gates reais no fim.
+Não peça aprovação adicional para iniciar. Termine a implementação e tente o push/deploy se as credenciais e permissões permitirem; não finja sucessos que não ocorreram.
+  ]]></execution_and_delegation>
+
+  <stack><![CDATA[
+- Vite + React + TypeScript, npm, SPA estática sem roteamento.
+- CSS Modules ou CSS próprio com design tokens; não usar kit de UI genérico.
+- motion/react para animações, somente se necessário. lucide-react para ícones de categoria.
+- Vitest + React Testing Library para testes focados; ESLint, TypeScript strict, scripts dev/build/lint/typecheck/test.
+- Preferir acessibilidade e Core Web Vitals a efeitos chamativos.
+- Fonts podem ser carregadas de fornecedor confiável com fallback e display swap. Não incluir arquivos de fonte de terceiros no ZIP.
+  ]]></stack>
+
+  <design_and_layout><![CDATA[
+Uma coluna única centralizada, max-width 420~440px, sem mockup de aparelho.
+Header: foto real e circular de Taty (88~96px); pequena borda champagne; logo original dourada; subtítulo "Nail Designer em Rio das Pedras"; frase curta "Beleza e cuidado em cada detalhe."
+Fundo vertical em public/assets/backgrounds/floral-champagne-mobile.webp, com camada off-white de contraste; NÃO reduzir legibilidade e NÃO deixar a flor dominar botões. Em desktop, centro com bom respiro.
+CTA único destacado: "Agendar pelo WhatsApp" — botão dourado/champagne e ícone WhatsApp.
+Logo pode aparecer em escala refinada (ex. largura máxima 195px), sem avatar/painel hero gigante.
+Exatamente TRÊS categorias visíveis quando todas estão fechadas:
+  1. Alongamentos — "Molde F1, Acrigel e Fibra de vidro".
+  2. Manutenção e cuidados — "Manutenção, banho de gel e blindagem".
+  3. Pés e extras — "Pés, spa e decoração".
+Cada categoria é um botão/card acessível com título, apoio curto, ícone discreto, chevron. Um acordeão aberto por vez; clicar novamente fecha. Os serviços se expandem logo abaixo DO PRÓPRIO botão, sem navegar para outra tela.
+Dentro de cada categoria usar links reais individuais para WhatsApp. Imagens das unhas são opcionais como minithumbnails só onde valorizarem; evite muito texto e manter compactação.
+Rodapé simples: "Tabela de valores" abre bottom sheet/modal HTML (não imagem no modal obrigatoriamente); "Instagram" só se URL real for configurada; "Localização" mostra texto Rio das Pedras até endereço exato ser fornecido, não inventar pin exato ou mapa da loja.
+Cores sugeridas: #FBF8F2, #F0E2D1, #E7D3B8, #B58A4D, #4B3427; tipografia serifada delicada nos títulos e sans-serif legível nos itens.
+  ]]></design_and_layout>
+
+  <interaction_and_motion><![CDATA[
+O visitante deve conseguir selecionar e enviar uma mensagem em 2 ou 3 toques.
+Abertura da página: header discreto com fade-in + translateY suave e botões com stagger curto (no máximo ~250ms entre início e término do conjunto). Nada de splash bloqueando interação.
+Accordion: transição suave de altura/opacidade ~180-280ms, sem jump, preservando foco e acessibilidade. prefers-reduced-motion desativa movimento. Um aberto por vez.
+No clique em item de serviço: abrir o link wa.me em nova aba (target=_blank, rel=noopener noreferrer), com mensagem pré-preenchida e serviço correto. O link precisa funcionar sem JavaScript imperativo no onClick.
+Foco visível e área clicável >=44px. ARIA de acordeão com aria-expanded e aria-controls, id correto, Enter/Espaço; fechar modal via Escape, botão x, clique externo se acessível, e restituir foco ao trigger.
+Sem overflow horizontal em 320, 375, 390, 430, 768px; testes em iOS Safari quando possível, Android Chrome e desktop.
+  ]]></interaction_and_motion>
+
+  <services_and_messages><![CDATA[
+Leia content/services.json como fonte de verdade para categorias e itens.
+Número 5521989358048. Mensagem geral EXATA:
+  Olá, Taty! Vim pelo link da bio e gostaria de agendar um horário. Pode me informar os horários disponíveis?
+Mensagem de serviço gerada sem inventar condições:
+  Olá, Taty! Vim pelo link da bio e gostaria de agendar {SERVIÇO}. Pode me informar os horários disponíveis?
+Sempre montar URL https://wa.me/5521989358048?text=${encodeURIComponent(mensagem)}.
+Testar que cada serviço abre mensagem correspondente e mensagem geral não omite a pergunta final.
+Categorias e itens: Alongamentos => Molde F1, Acrigel, Fibra de vidro; Manutenção e cuidados => Manutenção Acrigel, Manutenção Fibra de vidro, Banho de gel, Blindagem; Pés e extras => Pé, Pé e mão simples, Spa dos pés, Decoração simples.
+Não incluir checkout, reserva real nem dados de cliente.
+  ]]></services_and_messages>
+
+  <price_table><![CDATA[
+Leia content/prices.json para fonte de verdade; não transcreva preços de imagem gerada.
+Regular: Banho de gel R$90; Molde F1/Acrigel R$130 (tabela original chama Mold ou Acrigel); Manutenção Acrigel R$110; Fibra de vidro R$150; Manutenção Fibra de vidro R$120; Decoração simples R$10 o par; Pé R$30; Blindagem R$50; Pé e mão simples R$45; Spa dos pés R$70.
+PROIBIDO mostrar a oferta promocional R$99 como preço regular: essa oferta de tráfego pago é separada. Não colocar preços nos botões das categorias. Modal com preços HTML acessíveis e nota "Valores sujeitos a confirmação no atendimento." Editáveis em arquivo de dados.
+A arte da tabela original deve permanecer como arquivo de referência, mas a UI funcional deve mostrar preços em texto real, não depender de imagem.
+  ]]></price_table>
+
+  <asset_integration><![CDATA[
+Prioridade dos assets: logo-gold.png, taty-avatar-real.webp, floral-champagne-mobile.webp. Verifique que estão no caminho informado em assets-manifest.json e otimize tamanho no site. Não renderizar 404 ou strings de caminho como se fosse texto. Monograma como fallback real.
+As fotos brutas de Fibra, Acrigel e Acrigel Vermelho foram enviadas pela Taty e devem manter traço/cores originais. O arquivo molde-f1-referencia-real.webp é um RECORTE DE ARTE, não foto bruta: não apresentar como comprovação de portfólio, nem usar automaticamente nos thumbnails. Não fingir que fotos genéricas de IA são portfólio real. Use-as apenas em thumbnails onde ajudam; interface principal precisa continuar compacta. Foto real da Taty SOMENTE no pequeno avatar, não usar hero gigante.
+Não usar os dois retratos gerados por IA do diretório reference/generated_10, pois são referências não aprovadas com possível alteração de uniforme.
+No GitHub Pages, todos os caminhos em assets-manifest.json são lógicos (começam com /assets); na implementação configure resolver que prefixa import.meta.env.BASE_URL para evitar erro no subcaminho /tatysoaresnails-linkbio/. Evite hardcode '/assets/...' diretamente no src da imagem.
+  ]]></asset_integration>
+
+  <code_quality_tests><![CDATA[
+Implementar dados em src/data, links em src/config, componentes HeaderProfile, WhatsAppCTA, CategoryAccordion, ServiceRow, PriceSheet, FooterActions. Use fallback bom sem quebra.
+Incluir testes com Vitest/RTL: 3 categorias exatas no estado inicial, itens corretamente associados, toggle de sanfona, only-one-open, texto de todos os wa.me, encoding de caracteres especiais, modal de preço, escape/foco e nenhum link para endereço inventado.
+Executar npm install / npm ci, npm run lint, npm run typecheck, npm run test (run ou equivalente), npm run build. Corrigir até todos passarem; documentar exceção exata se ambiente não permitir.
+Testar visualmente no browser com screenshots 320, 375, 390, 430; validar layout compacto, foco, botões, scroll, legibilidade; conferir acessibilidade básica.
+Não declarar testes E2E não executados.
+  ]]></code_quality_tests>
+
+  <git_and_publication><![CDATA[
+O usuário deseja site FUNCIONAL online e código enviado ao GitHub, não apenas arquivos locais.
+Antes de publicar: git status, git remote -v, branch, log; o estado real prevalece. Se repositório vazio, crie commit organizado na main; caso contrário preserve código do usuário e crie branch/PR de integração segura.
+Subir para https://github.com/pedroh99p-bot/tatysoaresnails-linkbio por git push normal após gates. Se não autenticado, relatar precisamente e incluir comandos de login, sem inventar push.
+Preparar GitHub Pages (Vite base = '/tatysoaresnails-linkbio/' quando em GitHub Pages). Criar workflow em .github/workflows/deploy.yml com permissions contents:read, pages:write, id-token:write, checkout, setup-node, npm ci, lint/typecheck/test/build, upload-pages-artifact de dist, deploy-pages. Não guardar tokens pessoais no repositório.
+Se permissões permitirem, configurar/ativar GitHub Pages com fonte GitHub Actions e acionar deploy. Verificar página no URL resultante e ao menos um CTA wa.me. Se settings/API não estiverem habilitados, documentar passos mínimos para ativar: Settings > Pages > Source: GitHub Actions; workflow seguirá na main.
+Não declarar "publicado" ou mostrar URL como ativo sem teste HTTP de sucesso.
+  ]]></git_and_publication>
+
+  <optional_verified_social_link><![CDATA[
+Instagram: URL e @ não foram confirmados pelo usuário, por isso config.instagramUrl = null e esconder ou desabilitar visualmente sem falso link; localização: Rio das Pedras, Rio de Janeiro, apenas texto até receber endereço do estúdio. Não inventar coordenadas, avaliações ou depoimentos.
+  ]]></optional_verified_social_link>
+
+  <completion_report><![CDATA[
+Responder em português com: (1) commit/branch e URL do repositório, (2) status real do push e GitHub Pages com URL só se validada, (3) arquivos principais, (4) resultados de lint/typecheck/test/build e visual checks, (5) confirmação do WhatsApp 5521989358048 em CTA principal e todos os serviços, (6) pendências reais: @Instagram e link/endereço exato do estúdio, confirmação final de preços, (7) instrução de manutenção simples.
+A próxima entrega deve ser um site funcional com assets incluídos, não apenas layout/protótipo.
+  ]]></completion_report>
+</codex_execution_package>

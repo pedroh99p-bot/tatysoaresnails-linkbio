@@ -1,0 +1,69 @@
+[
+  {
+    "id": "alongamentos",
+    "label": "Alongamentos",
+    "description": "Molde F1, Acrigel e Fibra de vidro",
+    "items": [
+      {
+        "id": "molde-f1",
+        "label": "Molde F1"
+      },
+      {
+        "id": "acrigel",
+        "label": "Acrigel",
+        "image": "/assets/services/acrigel-real.webp"
+      },
+      {
+        "id": "fibra-de-vidro",
+        "label": "Fibra de vidro",
+        "image": "/assets/services/fibra-de-vidro-real.webp"
+      }
+    ]
+  },
+  {
+    "id": "manutencao-cuidados",
+    "label": "Manutenção e cuidados",
+    "description": "Manutenção, banho de gel e blindagem",
+    "items": [
+      {
+        "id": "manutencao-acrigel",
+        "label": "Manutenção Acrigel"
+      },
+      {
+        "id": "manutencao-fibra",
+        "label": "Manutenção Fibra de vidro"
+      },
+      {
+        "id": "banho-gel",
+        "label": "Banho de gel"
+      },
+      {
+        "id": "blindagem",
+        "label": "Blindagem"
+      }
+    ]
+  },
+  {
+    "id": "pes-extras",
+    "label": "Pés e extras",
+    "description": "Pés, spa e decoração",
+    "items": [
+      {
+        "id": "pe",
+        "label": "Pé"
+      },
+      {
+        "id": "pe-mao",
+        "label": "Pé e mão simples"
+      },
+      {
+        "id": "spa",
+        "label": "Spa dos pés"
+      },
+      {
+        "id": "decoracao",
+        "label": "Decoração simples"
+      }
+    ]
+  }
+]
